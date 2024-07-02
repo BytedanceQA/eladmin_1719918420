@@ -253,22 +253,6 @@ public class DeptServiceImpl implements DeptService {
         }
     }
 
-    private List<DeptDto> deduplication(List<DeptDto> list) {
-        List<DeptDto> deptDtos = new ArrayList<>();
-        for (DeptDto deptDto : list) {
-            boolean flag = true;
-            for (DeptDto dto : list) {
-                if (dto.getId().equals(deptDto.getPid())) {
-                    flag = false;
-                    break;
-                }
-            }
-            if (flag){
-                deptDtos.add(deptDto);
-            }
-        }
-        return deptDtos;
-    }
 
     /**
      * 清理缓存

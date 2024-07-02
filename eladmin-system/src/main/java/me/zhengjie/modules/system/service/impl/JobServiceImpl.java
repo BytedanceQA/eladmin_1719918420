@@ -104,18 +104,7 @@ public class JobServiceImpl implements JobService {
         redisUtils.delByKeys(CacheKey.JOB_ID, ids);
     }
 
-    @Override
-    public void download(List<JobDto> jobDtos, HttpServletResponse response) throws IOException {
-        List<Map<String, Object>> list = new ArrayList<>();
-        for (JobDto jobDTO : jobDtos) {
-            Map<String,Object> map = new LinkedHashMap<>();
-            map.put("岗位名称", jobDTO.getName());
-            map.put("岗位状态", jobDTO.getEnabled() ? "启用" : "停用");
-            map.put("创建日期", jobDTO.getCreateTime());
-            list.add(map);
-        }
-        FileUtil.downloadExcel(list, response);
-    }
+
 
     @Override
     public void verification(Set<Long> ids) {
